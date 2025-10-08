@@ -50,5 +50,5 @@ const lilleVieuxLilleData = {
 };
 
 export default function LilleVieuxLillePage() {
-  return <LocalPage data={lilleVieuxLilleData} />;
+  return <LocalPage {...lilleVieuxLilleData} />;
 }

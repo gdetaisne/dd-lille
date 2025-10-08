@@ -50,5 +50,5 @@ const lilleMoulinsData = {
 };
 
 export default function LilleMoulinsPage() {
-  return <LocalPage data={lilleMoulinsData} />;
+  return <LocalPage {...lilleMoulinsData} />;
 }

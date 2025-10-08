@@ -50,5 +50,5 @@ const lilleCentreData = {
 };
 
 export default function LilleCentrePage() {
-  return <LocalPage data={lilleCentreData} />;
+  return <LocalPage {...lilleCentreData} />;
 }

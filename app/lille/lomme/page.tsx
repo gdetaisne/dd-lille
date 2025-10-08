@@ -50,5 +50,5 @@ const lilleLommeData = {
 };
 
 export default function LilleLommePage() {
-  return <LocalPage data={lilleLommeData} />;
+  return <LocalPage {...lilleLommeData} />;
 }

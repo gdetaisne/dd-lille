@@ -50,5 +50,5 @@ const lilleWazemmesData = {
 };
 
 export default function LilleWazemmesPage() {
-  return <LocalPage data={lilleWazemmesData} />;
+  return <LocalPage {...lilleWazemmesData} />;
 }
