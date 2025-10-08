@@ -41,12 +41,12 @@ export default function Header() {
   };
 
   const zonesItems = [
-    { href: '/Lille', label: 'Lille' },
-    { href: '/Lille/vieux-Lille', label: 'Vieux Lille' },
-    { href: '/Lille/centre', label: 'Centre' },
-    { href: '/Lille/wazemmes', label: 'Wazemmes' },
-    { href: '/Lille/moulins', label: 'Moulins' },
-    { href: '/Lille/lomme', label: 'Lomme' },  ];
+    { href: '/lille', label: 'Lille' },
+    { href: '/lille/vieux-Lille', label: 'Vieux Lille' },
+    { href: '/lille/centre', label: 'Centre' },
+    { href: '/lille/wazemmes', label: 'Wazemmes' },
+    { href: '/lille/moulins', label: 'Moulins' },
+    { href: '/lille/lomme', label: 'Lomme' },  ];
 
 
   return (
@@ -127,7 +127,7 @@ export default function Header() {
                   Destinations fréquentes
                 </div>
                 <Link
-                  href="/Lille-vers-paris"
+                  href="/lille-vers-paris"
                   className="block px-4 py-2 text-gray-800 hover:bg-white/50 transition-colors"
                   onClick={() => {
                     setIsZonesDropdownOpen(false);
@@ -137,7 +137,7 @@ export default function Header() {
                   Lille → Paris
                 </Link>
                 <Link
-                  href="/Lille-vers-lyon"
+                  href="/lille-vers-lyon"
                   className="block px-4 py-2 text-gray-800 hover:bg-white/50 transition-colors"
                   onClick={() => {
                     setIsZonesDropdownOpen(false);
@@ -147,7 +147,7 @@ export default function Header() {
                   Lille → Lyon
                 </Link>
                 <Link
-                  href="/Lille-vers-toulouse"
+                  href="/lille-vers-toulouse"
                   className="block px-4 py-2 text-gray-800 hover:bg-white/50 transition-colors"
                   onClick={() => {
                     setIsZonesDropdownOpen(false);
