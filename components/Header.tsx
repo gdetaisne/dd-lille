@@ -42,7 +42,7 @@ export default function Header() {
 
   const zonesItems = [
     { href: '/lille', label: 'Lille' },
-    { href: '/lille/vieux-Lille', label: 'Vieux Lille' },
+    { href: '/lille/vieux-lille', label: 'Vieux Lille' },
     { href: '/lille/centre', label: 'Centre' },
     { href: '/lille/wazemmes', label: 'Wazemmes' },
     { href: '/lille/moulins', label: 'Moulins' },
