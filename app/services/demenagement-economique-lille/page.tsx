@@ -1,5 +1,21 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CtaPrimary from "@/components/CtaPrimary";
+import { getCanonicalUrl } from "@/lib/canonical-helper";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Déménagement Économique Lille - Tarifs & Devis | Moverz",
+  description: "Formule économique pour déménager à Lille. Idéal petits budgets. Estimation IA gratuite, devis sous 7j. À partir de 450€.",
+  alternates: {
+    canonical: getCanonicalUrl('services/demenagement-economique-lille'),
+  },
+  openGraph: {
+    title: "Déménagement Économique Lille",
+    description: "Formule économique pour déménager à Lille",
+    url: getCanonicalUrl('services/demenagement-economique-lille'),
+    type: 'website',
+  },
+};
 
 export default function DemenagementEconomiquePage() {
   return (

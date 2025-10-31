@@ -1,5 +1,21 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CtaPrimary from "@/components/CtaPrimary";
+import { getCanonicalUrl } from "@/lib/canonical-helper";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Déménagement Standard Lille - Tarifs & Devis | Moverz",
+  description: "Formule standard pour déménager à Lille. Rapport qualité/prix optimal. Estimation IA gratuite, devis sous 7j. À partir de 750€.",
+  alternates: {
+    canonical: getCanonicalUrl('services/demenagement-standard-lille'),
+  },
+  openGraph: {
+    title: "Déménagement Standard Lille",
+    description: "Formule standard pour déménager à Lille",
+    url: getCanonicalUrl('services/demenagement-standard-lille'),
+    type: 'website',
+  },
+};
 
 export default function DemenagementStandardPage() {
   return (
