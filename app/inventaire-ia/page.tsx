@@ -9,11 +9,6 @@ import PhotoGuidelines from '@/components/PhotoGuidelines';
 
 export default function InventaireIAPage() {
   const city = getCityDataFromUrl(env.SITE_URL);
-  
-  const handleEstimateClick = () => {
-    gaEvent('estimate_cost_click', {
-      button_text: 'Calculer mon devis gratuit',
-      destination: '/estimation-rapide/',
     });
   };
 
