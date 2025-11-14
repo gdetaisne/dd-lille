@@ -433,8 +433,8 @@ Assurer un déménagement d'entreprise à Lille est **obligatoire** dès que val
 
 **Liens utiles** :
 - [Déménagement Entreprise Lille : Guide Complet](/blog/demenagement-lille/demenagement-entreprise-lille-guide)
-- 
-- 
+- [Transfert Matériel Informatique](/blog/entreprise/transfert-materiel-informatique-entreprise-lille)
+- [Déménagement Archives](/blog/entreprise/demenagement-archives-entreprise-lille)
 
 
 
