@@ -47,6 +47,10 @@ const nextConfig = {
   // Redirections 404 - Articles satellites sans -lille vers avec -lille
   async redirects() {
     const existing = [
+      // VAGUE 2 – Migration homepage domaine → page ville moverz.fr
+      { source: '/', destination: 'https://moverz.fr/demenagement/lille/', permanent: true },
+
+      // Redirections historiques
       // Satellites génériques → Lille-spécifiques
       { source: '/blog/satellites/transfert-materiel-informatique-entreprise', destination: '/blog/satellites/transfert-materiel-informatique-entreprise-lille', permanent: true },
       { source: '/blog/satellites/prix-demenagement-saison', destination: '/blog/satellites/prix-demenagement-saison-lille', permanent: true },
