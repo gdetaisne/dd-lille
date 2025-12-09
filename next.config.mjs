@@ -50,6 +50,12 @@ const nextConfig = {
       // VAGUE 2 – Migration homepage domaine → page ville moverz.fr
       { source: '/', destination: 'https://moverz.fr/demenagement/lille/', permanent: true },
 
+      // MIGRATION BLOG → moverz.fr
+      { source: '/blog', destination: 'https://moverz.fr/blog/', permanent: true },
+      { source: '/blog/', destination: 'https://moverz.fr/blog/', permanent: true },
+      // Nouvelle structure /blog/demenagement-lille/{slug} → moverz.fr/blog/{slug}
+      { source: '/blog/demenagement-lille/:slug*', destination: 'https://moverz.fr/blog/:slug*', permanent: true },
+
       // Redirections historiques
       // Satellites génériques → Lille-spécifiques
       { source: '/blog/satellites/transfert-materiel-informatique-entreprise', destination: '/blog/satellites/transfert-materiel-informatique-entreprise-lille', permanent: true },
