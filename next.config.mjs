@@ -1,4 +1,4 @@
-import { getMoverzBlogRedirectsForHost } from './scripts/blog-moverz-redirects.mjs';
+import { getMoverzBlogRedirectsForHost } from '../../scripts/blog-moverz-redirects.mjs';
 
 const HOST = 'devis-demenageur-lille.fr';
 
@@ -7,29 +7,21 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   output: 'standalone',
-
-  // SEO: Force trailing slash sur toutes les URLs (y compris homepage)
   trailingSlash: true,
   
-  // Optimisations pour build CapRover
   typescript: {
-    ignoreBuildErrors: true, // Skip type-check en production (fait en dev)
+    ignoreBuildErrors: true,
   },
   eslint: {
-    ignoreDuringBuilds: true, // Skip ESLint en production (fait en dev)
+    ignoreDuringBuilds: true,
   },
-  
-  // Headers de sécurité gérés par middleware.js
 
-  // Configuration de sécurité supplémentaire
   experimental: {
     serverComponentsExternalPackages: []
   },
 
-  // Optimisations de sécurité
   compress: true,
   
-  // Configuration des images (si utilisées)
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -44,92 +36,43 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
 
-  // Redirections 404 - Articles satellites sans -lille vers avec -lille
   async redirects() {
     const existing = [
-      // VAGUE 2 – Migration homepage domaine → page ville moverz.fr
-      { source: '/', destination: 'https://moverz.fr/demenagement/lille/', permanent: true },
-
-      // MIGRATION BLOG → moverz.fr
-      { source: '/blog', destination: 'https://moverz.fr/blog/', permanent: true },
-      { source: '/blog/', destination: 'https://moverz.fr/blog/', permanent: true },
-      // Nouvelle structure /blog/demenagement-lille/{slug} → moverz.fr/blog/{slug}
-      { source: '/blog/demenagement-lille/:slug*', destination: 'https://moverz.fr/blog/:slug*', permanent: true },
-
-      // Redirections historiques
-      // Satellites génériques → Lille-spécifiques
-      { source: '/blog/satellites/transfert-materiel-informatique-entreprise', destination: '/blog/satellites/transfert-materiel-informatique-entreprise-lille', permanent: true },
-      { source: '/blog/satellites/prix-demenagement-saison', destination: '/blog/satellites/prix-demenagement-saison-lille', permanent: true },
-      { source: '/blog/satellites/demenagement-basse-saison-economie', destination: '/blog/satellites/demenagement-basse-saison-economie-lille', permanent: true },
-      { source: '/blog/satellites/formalites-administratives-demenagement-entreprise', destination: '/blog/satellites/formalites-administratives-demenagement-entreprise-lille', permanent: true },
-      { source: '/blog/satellites/main-oeuvre-demenagement-location', destination: '/blog/satellites/main-oeuvre-demenagement-location-lille', permanent: true },
-      { source: '/blog/satellites/changement-adresse-demarches-demenagement', destination: '/blog/satellites/changement-adresse-demarches-demenagement-lille', permanent: true },
-      { source: '/blog/satellites/demenagement-m3-calcul-tarif', destination: '/blog/satellites/demenagement-m3-calcul-tarif-lille', permanent: true },
-      { source: '/blog/satellites/aide-emballage-demenagement', destination: '/blog/satellites/aide-emballage-demenagement-lille', permanent: true },
-      { source: '/blog/satellites/delais-demenagement-international', destination: '/blog/satellites/delais-demenagement-international-lille', permanent: true },
-      { source: '/blog/satellites/materiel-demenagement-pas-cher-location', destination: '/blog/satellites/materiel-demenagement-pas-cher-location-lille', permanent: true },
-      { source: '/blog/satellites/aide-demenagement-personnes-agees', destination: '/blog/satellites/aide-demenagement-personnes-agees-lille', permanent: true },
-      { source: '/blog/satellites/prix-demenagement-longue-distance-paris', destination: '/blog/satellites/prix-demenagement-longue-distance-paris-lille', permanent: true },
-      { source: '/blog/satellites/formule-economique-vs-standard-demenagement', destination: '/blog/satellites/formule-economique-vs-standard-demenagement-lille', permanent: true },
-      { source: '/blog/satellites/assurance-garde-meuble-obligatoire', destination: '/blog/satellites/assurance-garde-meuble-lille-obligatoire', permanent: true },
-      { source: '/blog/satellites/demenagement-dimanche-surcout', destination: '/blog/satellites/demenagement-dimanche-lille-surcout', permanent: true },
-      { source: '/blog/satellites/demenageur-vieux-acces-difficiles', destination: '/blog/satellites/demenageur-vieux-lille-acces-difficiles', permanent: true },
-      { source: '/blog/satellites/demenagement-urgence-express', destination: '/blog/satellites/demenagement-urgence-lille-express', permanent: true },
-      { source: '/blog/satellites/prix-demenagement-garde-meuble', destination: '/blog/satellites/prix-demenagement-garde-meuble-lille', permanent: true },
-      { source: '/blog/satellites/prix-location-camion-20m3', destination: '/blog/satellites/prix-location-camion-20m3-lille', permanent: true },
-      { source: '/blog/satellites/protection-piano-transport-materiaux', destination: '/blog/satellites/protection-piano-transport-materiaux-lille', permanent: true },
-      { source: '/blog/satellites/garde-meuble-etudiant-pas-cher', destination: '/blog/satellites/garde-meuble-lille-etudiant-pas-cher', permanent: true },
-      { source: '/blog/satellites/porteurs-pro-vs-amis-demenagement', destination: '/blog/satellites/porteurs-pro-vs-amis-demenagement-lille', permanent: true },
-      { source: '/blog/satellites/stockage-piano-demenagement-temporaire', destination: '/blog/satellites/stockage-piano-demenagement-temporaire-lille', permanent: true },
-      { source: '/blog/satellites/tarifs-petit-demenagement-volume', destination: '/blog/satellites/tarifs-petit-demenagement-lille-volume', permanent: true },
-      { source: '/blog/satellites/location-camion-aller-simple-paris', destination: '/blog/satellites/location-camion-aller-simple-paris-lille', permanent: true },
-      { source: '/blog/satellites/demenagement-usa-formalites', destination: '/blog/satellites/demenagement-usa-lille-formalites', permanent: true },
-      { source: '/blog/satellites/transport-conteneur-demenagement-international', destination: '/blog/satellites/transport-conteneur-demenagement-international-lille', permanent: true },
-      { source: '/blog/satellites/garde-meuble-court-terme-long-terme', destination: '/blog/satellites/garde-meuble-lille-court-terme-long-terme', permanent: true },
-      { source: '/blog/satellites/demenagement-piano-prix', destination: '/blog/satellites/demenagement-piano-lille-prix', permanent: true },
-      { source: '/blog/satellites/diy-demenagement-budget-mini', destination: '/blog/satellites/diy-demenagement-lille-budget-mini', permanent: true },
-      { source: '/blog/satellites/demenagement-chambre-etudiant', destination: '/blog/satellites/demenagement-chambre-etudiant-lille', permanent: true },
-      { source: '/blog/satellites/quelle-taille-box-t2-t3', destination: '/blog/satellites/quelle-taille-box-lille-t2-t3', permanent: true },
-      { source: '/blog/satellites/demenagement-bureaux-weekend', destination: '/blog/satellites/demenagement-bureaux-lille-weekend', permanent: true },
-      { source: '/blog/satellites/demenagement-europe-belgique-allemagne', destination: '/blog/satellites/demenagement-europe-lille-belgique-allemagne', permanent: true },
-      { source: '/blog/satellites/demenagement-londres-post-brexit', destination: '/blog/satellites/demenagement-londres-post-brexit-lille', permanent: true },
-      { source: '/blog/satellites/permis-b-camion-demenagement-limites', destination: '/blog/satellites/permis-b-camion-demenagement-lille-limites', permanent: true },
-      { source: '/blog/satellites/economiser-prix-demenagement-astuces', destination: '/blog/satellites/economiser-prix-demenagement-lille-astuces', permanent: true },
-      { source: '/blog/satellites/demenageur-monte-meuble-quand-necessaire', destination: '/blog/satellites/demenageur-lille-monte-meuble-quand-necessaire', permanent: true },
-      { source: '/blog/satellites/formule-economique-cle-en-main', destination: '/blog/satellites/formule-economique-lille-cle-en-main', permanent: true },
-      { source: '/blog/satellites/duree-minimum-garde-meuble', destination: '/blog/satellites/duree-minimum-garde-meuble-lille', permanent: true },
-      { source: '/blog/satellites/assurance-piano-demenagement', destination: '/blog/satellites/assurance-piano-demenagement-lille', permanent: true },
-      { source: '/blog/satellites/desencombrement-avant-demenagement-economie', destination: '/blog/satellites/desencombrement-avant-demenagement-lille-economie', permanent: true },
-      { source: '/blog/satellites/prix-demenagement-t2-detaille', destination: '/blog/satellites/prix-demenagement-lille-t2-detaille', permanent: true },
-      { source: '/blog/satellites/agences-location-camion-comparatif', destination: '/blog/satellites/agences-location-camion-lille-comparatif', permanent: true },
-      { source: '/blog/satellites/self-stockage-vs-garde-meuble', destination: '/blog/satellites/self-stockage-vs-garde-meuble-lille', permanent: true },
-      { source: '/blog/satellites/conduire-camion-demenagement-conseils', destination: '/blog/satellites/conduire-camion-demenagement-lille-conseils', permanent: true },
-      { source: '/blog/satellites/piano-vieux-acces-difficiles', destination: '/blog/satellites/piano-vieux-lille-acces-difficiles', permanent: true },
-      { source: '/blog/satellites/demenagement-bureaux-nuit', destination: '/blog/satellites/demenagement-bureaux-lille-nuit', permanent: true },
-      { source: '/blog/satellites/demenagement-forfait-horaire', destination: '/blog/satellites/demenagement-lille-forfait-horaire', permanent: true },
-      { source: '/blog/satellites/cartons-gratuits-recuperer', destination: '/blog/satellites/cartons-gratuits-lille-recuperer', permanent: true },
-
-      // Ancienne URL estimation
-      { source: '/estimation-demenagement-lille/', destination: '/estimation-rapide', permanent: true },
-
-      // MAJUSCULES QUARTIERS → minuscules (Fix CSV 30/10/2025)
-      { source: '/quartiers-Lille', destination: '/quartiers-lille', permanent: true },
-
-      // CATÉGORIES BLOG VIDES → /blog (Fix CSV 30/10/2025)
-      { source: '/blog/etudiant', destination: '/blog', permanent: true },
-      { source: '/blog/urgent', destination: '/blog', permanent: true },
-      { source: '/blog/devis', destination: '/blog', permanent: true },
-      { source: '/blog/longue-distance', destination: '/blog', permanent: true },
-      // WILDCARDS CATCH-ALL (TASK-LEADGEN-02 - COMPLETS)
-      { source: '/blog/garde-meuble/:slug*', destination: '/blog/garde-meuble-lille/:slug*', permanent: true },
-      { source: '/blog/pas-cher/:slug*', destination: '/blog/demenagement-pas-cher-lille/:slug*', permanent: true },
-      { source: '/blog/international/:slug*', destination: '/blog/demenagement-international-lille/:slug*', permanent: true },
-      { source: '/blog/piano/:slug*', destination: '/blog/demenagement-piano-lille/:slug*', permanent: true },
-      { source: '/blog/demenageur/:slug*', destination: '/blog/demenageur-lille/:slug*', permanent: true },
-      { source: '/blog/aide/:slug*', destination: '/blog/aide-demenagement-lille/:slug*', permanent: true },
-      { source: '/blog/demenagement/:slug*', destination: '/blog/demenagement-lille/:slug*', permanent: true },
-      { source: '/blog/prix/:slug*', destination: '/blog/prix-demenagement-lille/:slug*', permanent: true },
-      // Supprimé : redirection vers soi-même (source = destination) causait erreur GSC (TASK-060)
+      // Homepage → Page ville moverz.fr
+      // Blog hub → moverz.fr
+      // Blog articles → moverz.fr
+      // Quartiers lille (6 pages)
+      { source: '/lille/', destination: 'https://moverz.fr/lille/', permanent: true },
+      { source: '/lille/centre/', destination: 'https://moverz.fr/lille/centre/', permanent: true },
+      { source: '/lille/lomme/', destination: 'https://moverz.fr/lille/lomme/', permanent: true },
+      { source: '/lille/moulins/', destination: 'https://moverz.fr/lille/moulins/', permanent: true },
+      { source: '/lille/vieux-lille/', destination: 'https://moverz.fr/lille/vieux-lille/', permanent: true },
+      { source: '/lille/wazemmes/', destination: 'https://moverz.fr/lille/wazemmes/', permanent: true },
+      // Hub quartiers lille
+      // Corridors depuis lille (6 pages)
+      { source: '/lille-vers-espagne/', destination: 'https://moverz.fr/lille-vers-espagne/', permanent: true },
+      { source: '/lille-vers-lyon/', destination: 'https://moverz.fr/lille-vers-lyon/', permanent: true },
+      { source: '/lille-vers-marseille/', destination: 'https://moverz.fr/lille-vers-marseille/', permanent: true },
+      { source: '/lille-vers-nantes/', destination: 'https://moverz.fr/lille-vers-nantes/', permanent: true },
+      { source: '/lille-vers-paris/', destination: 'https://moverz.fr/lille-vers-paris/', permanent: true },
+      { source: '/lille-vers-toulouse/', destination: 'https://moverz.fr/lille-vers-toulouse/', permanent: true },
+      // Services
+      { source: '/services/', destination: 'https://moverz.fr/services/', permanent: true },
+      { source: '/services/demenagement-economique-lille/', destination: 'https://moverz.fr/services/demenagement-economique/', permanent: true },
+      { source: '/services/demenagement-premium-lille/', destination: 'https://moverz.fr/services/demenagement-premium/', permanent: true },
+      { source: '/services/demenagement-standard-lille/', destination: 'https://moverz.fr/services/demenagement-standard/', permanent: true },
+      // Pages communes
+      { source: '/cgu/', destination: 'https://moverz.fr/cgu/', permanent: true },
+      { source: '/cgv/', destination: 'https://moverz.fr/cgv/', permanent: true },
+      { source: '/comment-ca-marche/', destination: 'https://moverz.fr/comment-ca-marche/', permanent: true },
+      { source: '/contact/', destination: 'https://moverz.fr/contact/', permanent: true },
+      { source: '/devis-gratuits/', destination: 'https://moverz.fr/devis-gratuits/', permanent: true },
+      { source: '/estimation-rapide/', destination: 'https://moverz.fr/estimation-rapide/', permanent: true },
+      { source: '/faq/', destination: 'https://moverz.fr/faq/', permanent: true },
+      { source: '/mentions-legales/', destination: 'https://moverz.fr/mentions-legales/', permanent: true },
+      { source: '/notre-offre/', destination: 'https://moverz.fr/notre-offre/', permanent: true },
+      { source: '/partenaires/', destination: 'https://moverz.fr/partenaires/', permanent: true },
+      { source: '/politique-confidentialite/', destination: 'https://moverz.fr/politique-confidentialite/', permanent: true },
     ];
 
     const blogToMoverz = getMoverzBlogRedirectsForHost(HOST);
