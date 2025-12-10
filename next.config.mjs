@@ -1,4 +1,4 @@
-import { getMoverzBlogRedirectsForHost } from './scripts/blog-moverz-redirects.mjs';
+import { getMoverzBlogRedirectsForHost } from '../../scripts/blog-moverz-redirects.mjs';
 
 const HOST = 'devis-demenageur-lille.fr';
 
@@ -39,8 +39,12 @@ const nextConfig = {
   async redirects() {
     const existing = [
       // Homepage → Page ville moverz.fr
+      { source: '/', destination: 'https://moverz.fr/demenagement/lille/', permanent: true },
       // Blog hub → moverz.fr
+      { source: '/blog', destination: 'https://moverz.fr/blog/', permanent: true },
+      { source: '/blog/', destination: 'https://moverz.fr/blog/', permanent: true },
       // Blog articles → moverz.fr
+      { source: '/blog/demenagement-lille/:slug*', destination: 'https://moverz.fr/blog/:slug*', permanent: true },
       // Quartiers lille (6 pages)
       { source: '/lille/', destination: 'https://moverz.fr/lille/', permanent: true },
       { source: '/lille/centre/', destination: 'https://moverz.fr/lille/centre/', permanent: true },
@@ -49,6 +53,7 @@ const nextConfig = {
       { source: '/lille/vieux-lille/', destination: 'https://moverz.fr/lille/vieux-lille/', permanent: true },
       { source: '/lille/wazemmes/', destination: 'https://moverz.fr/lille/wazemmes/', permanent: true },
       // Hub quartiers lille
+      { source: '/quartiers-lille/', destination: 'https://moverz.fr/quartiers-lille/', permanent: true },
       // Corridors depuis lille (6 pages)
       { source: '/lille-vers-espagne/', destination: 'https://moverz.fr/lille-vers-espagne/', permanent: true },
       { source: '/lille-vers-lyon/', destination: 'https://moverz.fr/lille-vers-lyon/', permanent: true },
