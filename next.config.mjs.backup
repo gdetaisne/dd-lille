@@ -57,10 +57,10 @@ const nextConfig = {
       { source: '/lille-vers-paris/', destination: 'https://moverz.fr/lille-vers-paris/', permanent: true },
       { source: '/lille-vers-toulouse/', destination: 'https://moverz.fr/lille-vers-toulouse/', permanent: true },
       // Services
-      { source: '/services/', destination: 'https://moverz.fr/services/', permanent: true },
-      { source: '/services/demenagement-economique-lille/', destination: 'https://moverz.fr/services/demenagement-economique/', permanent: true },
-      { source: '/services/demenagement-premium-lille/', destination: 'https://moverz.fr/services/demenagement-premium/', permanent: true },
-      { source: '/services/demenagement-standard-lille/', destination: 'https://moverz.fr/services/demenagement-standard/', permanent: true },
+      { source: '/services/', destination: 'https://moverz.fr/', permanent: true },
+      { source: '/services/demenagement-economique-lille/', destination: 'https://moverz.fr/', permanent: true },
+      { source: '/services/demenagement-premium-lille/', destination: 'https://moverz.fr/', permanent: true },
+      { source: '/services/demenagement-standard-lille/', destination: 'https://moverz.fr/', permanent: true },
       // Pages communes
       { source: '/cgu/', destination: 'https://moverz.fr/cgu/', permanent: true },
       { source: '/cgv/', destination: 'https://moverz.fr/cgv/', permanent: true },
