@@ -45,6 +45,12 @@ const nextConfig = {
       { source: '/blog/', destination: 'https://moverz.fr/blog/', permanent: true },
       // Blog articles → moverz.fr
       { source: '/blog/demenagement-lille/:slug*', destination: 'https://moverz.fr/blog/:slug*', permanent: true },
+      // Liens internes ville (self-référence) → moverz.fr
+      { source: '/demenagement/lille', destination: 'https://moverz.fr/demenagement/lille/', permanent: true },
+      { source: '/quartiers-lille', destination: 'https://moverz.fr/quartiers-lille/', permanent: true },
+      // Liens partenaires/devis → moverz.fr
+      { source: '/partenaires', destination: 'https://moverz.fr/partenaires/', permanent: true },
+      { source: '/devis-gratuits', destination: 'https://moverz.fr/devis-gratuits/', permanent: true },
       // Catch-all blog articles (any slug) → moverz.fr
       { source: '/blog/:slug*', destination: 'https://moverz.fr/blog/:slug*', permanent: true },
       // Quartiers cross-ville → moverz.fr
